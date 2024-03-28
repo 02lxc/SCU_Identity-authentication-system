@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+
+  <title>登录</title>
+
+  <style>
+        body {
+            background-image: url("https://vip.helloimg.com/images/2023/11/01/oOkCOo.png");
+            font-family: Arial, sans-serif;
+            /*text-align: center;*/
+        }
+
+        .login-container {
+            width: 360px;
+            height: 480px;
+            margin-top: 0px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            opacity: 0.7;
+        }
+  </style>
+
+
+</head>
+
+<body class="d-flex vw-100 vh-100 align-items-center justify-content-center">
+<div class="login-container">
+  <form action="/login" method="post" id="myForm">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+    </div>
+    <div class="mb-3">
+      <label for="authcode" class="form-label">验证码(区分大小写)</label>
+      <input type="text" class="form-control" id="authcode" name="authcode">
+      <img src="/authcode" alt="">
+    </div>
+    <input type="hidden" id="timestampInput" name="timestamp" value="">
+
+    <script>
+        // 在表单提交前设置时间戳值
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+        // 获取当前时间戳
+        const timestamp = Date.now();
+
+        // 设置隐藏输入框的值
+        document.getElementById('timestampInput').value = timestamp;
+      });
+    </script>
+    <button type="submit" class="btn btn-primary">登录</button>
+  </form>
+</div>
+</body>
+
+</html>
